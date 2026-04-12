@@ -84,7 +84,7 @@ export function SignupForm({
             type="text"
             placeholder="John Doe"
             required
-            className="bg-secondary/50 border-border/50 h-12"
+            className="bg-secondary border-border/50 h-12"
           />
         </Field>
         <Field>
@@ -95,7 +95,7 @@ export function SignupForm({
             type="email"
             placeholder="m@example.com"
             required
-            className="bg-secondary/50 border-border/50 h-12"
+            className="bg-secondary border-border/50 h-12"
           />
           <FieldDescription>
             We&apos;ll use this to contact you. We will not share your email
@@ -110,7 +110,7 @@ export function SignupForm({
               name="password"
               type={showPassword ? "text" : "password"}
               required
-              className="bg-secondary/50 border-border/50 h-12 pr-10"
+              className="bg-secondary border-border/50 h-12 pr-10"
             />
             <button
               type="button"
@@ -139,7 +139,7 @@ export function SignupForm({
               name="confirm-password"
               type={showConfirmPassword ? "text" : "password"}
               required
-              className="bg-secondary/50 border-border/50 h-12 pr-10"
+              className="bg-secondary border-border/50 h-12 pr-10"
             />
             <button
               type="button"
@@ -159,7 +159,7 @@ export function SignupForm({
           <FieldDescription>Please confirm your password.</FieldDescription>
         </Field>
         <Field>
-          <Button type="submit" disabled={isLoading}>
+          <Button className="cursor-pointer" type="submit" disabled={isLoading}>
             {isLoading ? "Creating account..." : "Create Account"}
           </Button>
         </Field>

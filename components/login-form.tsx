@@ -76,7 +76,7 @@ export function LoginForm({
             type="email"
             placeholder="m@example.com"
             required
-            className="bg-secondary/50 border-border/50 h-12"
+            className="bg-secondary border-border/50 h-12"
           />
         </Field>
         <Field>
@@ -95,7 +95,7 @@ export function LoginForm({
               name="password"
               type={showPassword ? "text" : "password"}
               required
-              className="bg-secondary/50 border-border/50 h-12 pr-10"
+              className="bg-secondary border-border/50 h-12 pr-10"
             />
             <button
               type="button"
@@ -114,7 +114,7 @@ export function LoginForm({
           </div>
         </Field>
         <Field>
-          <Button type="submit" disabled={isLoading}>
+          <Button className="cursor-pointer" type="submit" disabled={isLoading}>
             {isLoading ? "Signing in..." : "Login"}
           </Button>
         </Field>
