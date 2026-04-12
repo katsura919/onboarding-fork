@@ -521,12 +521,12 @@ export default function OnboardingPage() {
       )}
 
       {/* CTA Area */}
-      <div className="pt-8 border-t border-border/50 flex flex-col items-center sm:flex-row sm:justify-between gap-6">
+      <div className="pt-6 border-t border-border/50 flex flex-col items-center sm:flex-row sm:justify-between gap-4">
         <div className="text-center sm:text-left">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             {currentStep === "1C" ? "Final Step of Phase 1" : "Ready to proceed?"}
           </p>
-          <p className="font-semibold">
+          <p className="font-semibold text-sm">
             {currentStep === "1A" && "Next: Getting to Know You"}
             {currentStep === "1B" && "Next: Your Triage"}
             {currentStep === "1C" && "Next: Open Share"}
@@ -547,13 +547,13 @@ export default function OnboardingPage() {
           </p>
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {currentStep !== "1A" && (
             <Button 
               variant="outline" 
               onClick={handleBack}
               disabled={isUpdating}
-              className="h-14 px-8 rounded-2xl border-2"
+              className="h-11 px-6 rounded-xl border-2"
             >
               Back
             </Button>
@@ -562,7 +562,7 @@ export default function OnboardingPage() {
           <InteractiveHoverButton 
             onClick={handleContinue}
             disabled={isUpdating}
-            className="h-14 px-10 text-lg"
+            className="h-11 px-8"
           >
             {isUpdating ? "Saving..." : (currentStep === "4C" ? (status?.onboardingStatus?.isCompleted ? "Return to Dashboard" : "Complete Pathway") : "Continue")}
           </InteractiveHoverButton>
