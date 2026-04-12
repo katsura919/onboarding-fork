@@ -38,6 +38,7 @@ export default function OnboardingPage() {
             triage_wiring: data.connection?.triage?.internalWiring || "",
             triage_disc: data.connection?.triage?.disc || "",
             open_share: data.connection?.openShare || "",
+            culture_takeaways: data.connection?.cultureTakeaways || "",
             // Phase 2
             awareness_360: data.awareness?.evaluation360 || [{ name: "", email: "" }],
             growth_takeaways: data.awareness?.growthInputs?.takeaways || "",
@@ -80,6 +81,8 @@ export default function OnboardingPage() {
         dataToSave["connection.triage.disc"] = formData.triage_disc
       } else if (nextStep === "1D") {
         dataToSave["connection.openShare"] = formData.open_share
+      } else if (nextStep === "1E") {
+        dataToSave["connection.cultureTakeaways"] = formData.culture_takeaways
       } else if (nextStep === "2A") {
         dataToSave["awareness.evaluation360"] = formData.awareness_360
       } else if (nextStep === "2B") {
@@ -106,7 +109,8 @@ export default function OnboardingPage() {
       else if (nextStep === "1B") nextStep = "1C"
       else if (nextStep === "1C") nextStep = "1D"
       else if (nextStep === "1D") nextStep = "1E"
-      else if (nextStep === "1E") {
+      else if (nextStep === "1E") nextStep = "1F"
+      else if (nextStep === "1F") {
         nextPhase = 2
         nextStep = "2A"
       } else if (nextStep === "2A") nextStep = "2B"
@@ -178,6 +182,8 @@ export default function OnboardingPage() {
         dataToSave["connection.triage.disc"] = formData.triage_disc
       } else if (currentStep === "1D") {
         dataToSave["connection.openShare"] = formData.open_share
+      } else if (currentStep === "1E") {
+        dataToSave["connection.cultureTakeaways"] = formData.culture_takeaways
       } else if (currentStep === "2A") {
         dataToSave["awareness.evaluation360"] = formData.awareness_360
       } else if (currentStep === "2B") {
@@ -221,9 +227,10 @@ export default function OnboardingPage() {
       else if (prevStep === "1C") prevStep = "1B"
       else if (prevStep === "1D") prevStep = "1C"
       else if (prevStep === "1E") prevStep = "1D"
+      else if (prevStep === "1F") prevStep = "1E"
       else if (prevStep === "2A") {
         prevPhase = 1
-        prevStep = "1E"
+        prevStep = "1F"
       } else if (prevStep === "2B") prevStep = "2A"
       else if (prevStep === "2C") prevStep = "2B"
       else if (prevStep === "3A") {
@@ -333,6 +340,17 @@ export default function OnboardingPage() {
         {currentStep === "1E" && (
           <>
             <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 font-serif">
+              Getting to Know Us
+            </h1>
+            <p className="text-xl text-muted-foreground italic font-medium">
+              "Understanding the heartbeat and rhythm of Minesha."
+            </p>
+          </>
+        )}
+
+        {currentStep === "1F" && (
+          <>
+            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 font-serif">
               Book Your Call
             </h1>
             <p className="text-xl text-muted-foreground italic font-medium">
@@ -429,6 +447,28 @@ export default function OnboardingPage() {
           </>
         )}
 
+        {currentStep.startsWith("2") && (
+          <>
+            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 font-serif">
+              Awareness Phase
+            </h1>
+            <p className="text-xl text-muted-foreground italic font-medium">
+              "Gaining clarity on your current reality."
+            </p>
+          </>
+        )}
+
+        {currentStep.startsWith("3") && (
+          <>
+            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 font-serif">
+              Stabilization Phase
+            </h1>
+            <p className="text-xl text-muted-foreground italic font-medium">
+              "Embodying the vision of your desired future."
+            </p>
+          </>
+        )}
+
         {currentStep.startsWith("4") && (
           <>
             <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 font-serif">
@@ -490,8 +530,9 @@ export default function OnboardingPage() {
             {currentStep === "1A" && "Next: Getting to Know You"}
             {currentStep === "1B" && "Next: Your Triage"}
             {currentStep === "1C" && "Next: Open Share"}
-            {currentStep === "1D" && "Next: Schedule Orientation"}
-            {currentStep === "1E" && "Next: 360° Evaluation"}
+            {currentStep === "1D" && "Next: Getting to Know Us"}
+            {currentStep === "1E" && "Next: Schedule Orientation"}
+            {currentStep === "1F" && "Next: 360° Evaluation"}
             {currentStep === "2A" && "Next: Growth Inputs"}
             {currentStep === "2B" && "Next: Evening Pulse"}
             {currentStep === "2C" && "Next: Phase 3 Stabilization"}

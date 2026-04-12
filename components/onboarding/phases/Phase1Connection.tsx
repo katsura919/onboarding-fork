@@ -13,22 +13,6 @@ export function Phase1Connection({ currentStep, formData, setFormData }: Phase1P
     <div className="min-h-[40vh]">
       {currentStep === "1A" && (
         <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          {/* Video Landing Placeholder */}
-          <div className="relative aspect-video rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl group border border-primary/10">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Button variant="outline" size="icon" className="h-20 w-20 rounded-full border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all text-white border-2">
-                <Play className="h-8 w-8 fill-current ml-1" />
-              </Button>
-            </div>
-            <div className="absolute bottom-6 left-6 space-y-1">
-              <p className="text-white font-bold text-lg">Welcome from your ProTeam</p>
-              <p className="text-white/70 text-sm flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4" /> 
-                3:45 • High Fidelity Connection
-              </p>
-            </div>
-          </div>
 
           {/* Narrative Section */}
           <div className="grid gap-8 md:grid-cols-2">
@@ -216,6 +200,46 @@ export function Phase1Connection({ currentStep, formData, setFormData }: Phase1P
       )}
 
       {currentStep === "1E" && (
+        <div className="space-y-12 animate-in fade-in duration-700 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 gap-10">
+            {[
+              { title: "Mission & Vision", id: "ft9eAypjpac", icon: <Sparkles className="h-4 w-4" /> },
+              { title: "Our Culture", id: "G-IJMF9WN6I", icon: <Heart className="h-4 w-4" /> },
+              { title: "Signature Key Terms", id: "b75eF1j3BdE", icon: <ShieldCheck className="h-4 w-4" /> }
+            ].map((video) => (
+              <div key={video.id} className="space-y-4">
+                <div className="relative aspect-video rounded-sm overflow-hidden bg-neutral-900 border border-primary/10 shadow-2xl">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.id}`}
+                    className="absolute inset-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wider flex items-center gap-2 px-2">
+                  {video.icon}
+                  {video.title}
+                </h3>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-10 rounded-[2.5rem] bg-primary/5 border border-primary/20 space-y-6">
+            <div className="space-y-3">
+              <h3 className="text-2xl font-bold font-serif italic text-primary">"What resonated most with you?"</h3>
+              <p className="text-muted-foreground">Jot down any thoughts, breakthroughs, or questions that surfaced while watching.</p>
+            </div>
+            <textarea 
+              value={formData.culture_takeaways}
+              onChange={(e) => setFormData({...formData, culture_takeaways: e.target.value})}
+              className="w-full bg-background/50 border-2 border-border/50 rounded-2xl p-6 focus:ring-2 focus:ring-primary/20 outline-none transition-all min-h-[150px] text-lg font-serif italic"
+              placeholder="Your takeaways..."
+            />
+          </div>
+        </div>
+      )}
+
+      {currentStep === "1F" && (
         <div className="flex flex-col items-center justify-center py-20 text-center space-y-8 animate-in zoom-in duration-500">
           <div className="h-24 w-24 rounded-full bg-primary/20 flex items-center justify-center animate-pulse">
             <Sparkles className="h-12 w-12 text-primary" />

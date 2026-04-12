@@ -42,11 +42,11 @@ A guided, calming onboarding journey designed to help leaders "offload their car
 - **Prompt**: "Is there anything on your heart, mind, or plate that you want me to be aware of?"
 - **Format**: Large text comment box.
 
-### Step 2B: Getting to Know Us (Culture Layer)
+### Step 1E: Getting to Know Us (Culture Layer)
 - Vision / Mission / Culture Videos.
 - PDL "Lingo" PDF Reflection Guide & Key Terms video.
 
-### Step 1E: Book Your Call
+### Step 1F: Book Your Call
 - **Strategy**: Focus on daily progress and getting tasks done before the live onboarding call.
 
 ---
