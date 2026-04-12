@@ -7,6 +7,9 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 import { toast } from "sonner"
 import { Confetti, type ConfettiRef } from "@/components/ui/confetti"
 
+import Lottie from "lottie-react"
+import welcomeAnimation from "@/public/assets/welcome.json"
+
 export default function SuccessPage() {
   const router = useRouter()
   const [isStarting, setIsStarting] = useState(false)
@@ -61,15 +64,16 @@ export default function SuccessPage() {
       
       <div className="relative z-10 max-w-2xl w-full text-center space-y-8 animate-in fade-in zoom-in duration-1000">
         
-        {/* Lottie Placeholder Container */}
-        <div className="relative mx-auto w-64 h-64 bg-primary/5 rounded-full flex items-center justify-center border-4 border-dashed border-primary/20 backdrop-blur-sm">
-          <div className="absolute inset-0 flex items-center justify-center text-primary/30 text-sm font-medium animate-pulse text-center p-4">
-             [Lottie Animation Placeholder]
-             <br />
-             (Celebratory Confetti & Support)
-          </div>
-          <Sparkles className="h-12 w-12 text-primary absolute -top-4 -right-4 animate-bounce" />
-          <Heart className="h-10 w-10 text-primary/40 absolute -bottom-4 -left-4 animate-pulse" />
+        {/* Lottie Animation Container */}
+        <div className="relative mx-auto w-64 h-64 flex items-center justify-center transition-all duration-700 hover:scale-110">
+          <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <Lottie 
+            animationData={welcomeAnimation} 
+            loop={true} 
+            className="w-full h-full relative z-10"
+          />
+          <Sparkles className="h-12 w-12 text-primary absolute -top-4 -right-4 animate-bounce z-20" />
+          <Heart className="h-10 w-10 text-primary/40 absolute -bottom-4 -left-4 animate-pulse z-20" />
         </div>
 
         <div className="space-y-4">

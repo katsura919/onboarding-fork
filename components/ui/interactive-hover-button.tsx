@@ -10,20 +10,20 @@ export function InteractiveHoverButton({
   return (
     <button
       className={cn(
-        "group bg-card relative w-auto cursor-pointer overflow-hidden rounded-full border p-2 px-6 text-center font-semibold",
+        "group bg-card relative w-auto cursor-pointer overflow-hidden rounded-full border p-2 px-6 text-center font-semibold transition-all duration-300",
         className
       )}
       {...props}
     >
       <div className="flex items-center justify-center gap-2">
         <div className="bg-primary h-2 w-2 rounded-full transition-all duration-300 group-hover:scale-[100.8]"></div>
-        <span className="inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
+        <span className="inline-block transition-all duration-300 group-hover:translate-x-4 group-hover:opacity-0">
           {children}
         </span>
       </div>
-      <div className="absolute top-0 left-0 z-10 flex h-full w-full translate-x-full items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-        <span>{children}</span>
-        <ArrowRight />
+      <div className="absolute inset-0 z-10 flex items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:opacity-100">
+        <span className="translate-x-0 transition-all duration-300 group-hover:translate-x-0">{children}</span>
+        <ArrowRight className="h-4 w-4" />
       </div>
     </button>
   )

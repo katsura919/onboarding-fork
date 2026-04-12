@@ -34,7 +34,7 @@ export function DashboardHeader() {
   }
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-primary/10 bg-background/60 backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full border-b border-primary/10 bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <Link href="/dashboard" className="flex items-center gap-2 group transition-all">
@@ -57,7 +57,7 @@ export function DashboardHeader() {
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuContent className="w-56 rounded-sm" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Leader</p>
