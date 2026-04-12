@@ -158,7 +158,7 @@ export default async function DashboardPage() {
               <CardFooter className="pt-2">
                 <Button asChild className="w-full sm:w-auto h-12 px-8 rounded-2xl group transition-all hover:pr-10">
                   <Link href="/dashboard/onboarding" className="flex items-center">
-                    Resume Journey 
+                    {status.isCompleted ? "View Journey" : "Resume Journey"}
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>

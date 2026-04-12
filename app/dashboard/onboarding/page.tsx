@@ -141,9 +141,14 @@ export default function OnboardingPage() {
       if (res.ok) {
         const newStatus = await res.json()
         setStatus(newStatus)
-        toast.success("Progress saved.")
+        toast.success("Pathway Activated!")
         router.refresh() // Sync the server-side sidebar
         
+        if (dataToSave["onboardingStatus.isCompleted"]) {
+          router.push("/dashboard")
+          return
+        }
+
         if (nextStep === `${(status?.currentPhase || 1) + 1}A`) {
           window.location.reload()
         }
@@ -502,7 +507,7 @@ export default function OnboardingPage() {
         </div>
         
         <div className="flex items-center gap-4">
-          {currentStep !== "1A" && status?.onboardingStatus?.isCompleted !== true && (
+          {currentStep !== "1A" && (
             <Button 
               variant="outline" 
               onClick={handleBack}
@@ -513,15 +518,13 @@ export default function OnboardingPage() {
             </Button>
           )}
           
-          {status?.onboardingStatus?.isCompleted !== true && (
-            <InteractiveHoverButton 
-              onClick={handleContinue}
-              disabled={isUpdating}
-              className="h-14 px-10 text-lg"
-            >
-              {isUpdating ? "Saving..." : (currentStep === "4C" ? "Complete Pathway" : "Continue")}
-            </InteractiveHoverButton>
-          )}
+          <InteractiveHoverButton 
+            onClick={handleContinue}
+            disabled={isUpdating}
+            className="h-14 px-10 text-lg"
+          >
+            {isUpdating ? "Saving..." : (currentStep === "4C" ? (status?.onboardingStatus?.isCompleted ? "Return to Dashboard" : "Complete Pathway") : "Continue")}
+          </InteractiveHoverButton>
         </div>
       </div>
     </div>
