@@ -4,7 +4,11 @@ import { jwtVerify } from "jose"
 
 const JWT_SECRET = process.env.JWT_SECRET || "peace-driven-default-secret-key"
 
-export async function proxy(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
+    return await proxyHandler(request)
+}
+
+export async function proxyHandler(request: NextRequest) {
     const token = request.cookies.get("auth_token")?.value
     const { pathname } = request.nextUrl
 
