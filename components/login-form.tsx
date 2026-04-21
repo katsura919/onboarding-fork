@@ -47,19 +47,26 @@ export function LoginForm({
 
             toast.success("Welcome back!")
 
-            // Redirect based on role
             const redirectPath =
                 data.user.role === "admin" ? "/admin" : "/dashboard"
             router.push(redirectPath)
-            router.refresh()
+            // keep isLoading=true — spinner holds until page unmounts
         } catch (error: any) {
             toast.error(error.message)
-        } finally {
             setIsLoading(false)
         }
     }
 
     return (
+        <>
+            {isLoading && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+                    <div className="flex flex-col items-center gap-3">
+                        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                        <p className="text-sm text-muted-foreground">Signing in...</p>
+                    </div>
+                </div>
+            )}
         <form
             onSubmit={handleSubmit}
             className={cn("flex flex-col gap-6", className)}
@@ -143,5 +150,6 @@ export function LoginForm({
                 </Field>
             </FieldGroup>
         </form>
+        </>
     )
 }

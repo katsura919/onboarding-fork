@@ -24,9 +24,9 @@ export async function LandingNav() {
     return (
         <nav className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-4 py-6 md:px-8">
             <Link href="/" className="flex items-center gap-2 md:gap-3">
-                <div className="relative h-8 w-8 overflow-hidden md:h-10 md:w-10">
+                <div className="relative h-10 w-10 overflow-hidden md:h-10 md:w-10">
                     <Image
-                        src="/assets/logo.png"
+                        src="/assets/pdl-logo.png"
                         alt="Logo"
                         fill
                         className="object-cover"

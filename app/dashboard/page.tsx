@@ -175,7 +175,7 @@ export default async function DashboardPage() {
 
                         {/* Onboarding Overview Card */}
                         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                            <Card className="relative overflow-hidden border-primary/20 bg-gradient-to-br from-background to-primary/5 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 md:col-span-2">
+                            <Card className="relative overflow-hidden border-primary/20 bg-card shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 md:col-span-2">
                                 <div className="pointer-events-none absolute top-0 right-0 p-4 opacity-10">
                                     <Sparkles className="h-24 w-24" />
                                 </div>
@@ -265,7 +265,9 @@ export default async function DashboardPage() {
                                         >
                                             {status.isCompleted
                                                 ? "View Journey"
-                                                : "Resume Journey"}
+                                                : progressValue === 0
+                                                  ? "Start Journey"
+                                                  : "Resume Journey"}
                                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </Button>
@@ -285,7 +287,8 @@ export default async function DashboardPage() {
                                             {[1, 2, 3, 4].map((phaseNum) => {
                                                 const isActive =
                                                     status.currentPhase ===
-                                                    phaseNum
+                                                        phaseNum &&
+                                                    !status.isCompleted
                                                 const isComplete =
                                                     status.currentPhase >
                                                         phaseNum ||

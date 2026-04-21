@@ -66,7 +66,7 @@ export function DashboardHeader() {
                         className="group flex items-center gap-2 transition-all"
                     >
                         <img
-                            src="/assets/logo.png"
+                            src="/assets/pdl-logo.png"
                             alt="Logo"
                             className="h-10 w-auto object-contain transition-transform group-hover:scale-110"
                         />

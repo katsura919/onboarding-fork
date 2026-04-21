@@ -523,6 +523,15 @@ export default function OnboardingContent() {
 
     const currentStep = status?.currentStep || "1A"
     return (
+        <>
+            {isUpdating && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+                    <div className="flex flex-col items-center gap-3">
+                        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                        <p className="text-sm text-muted-foreground">Saving your progress...</p>
+                    </div>
+                </div>
+            )}
         <div className="animate-in space-y-10 duration-1000 fade-in slide-in-from-bottom-4">
             {/* Header */}
             <div className="space-y-4">
@@ -895,5 +904,6 @@ export default function OnboardingContent() {
                 </div>
             </div>
         </div>
+        </>
     )
 }

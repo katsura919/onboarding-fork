@@ -290,7 +290,7 @@ export default function LoginPage() {
                             className="flex items-center gap-2 font-medium"
                         >
                             <img
-                                src="/assets/logo.png"
+                                src="/assets/pdl-logo.png"
                                 alt="Logo"
                                 className="size-20 object-contain"
                             />
